@@ -1,22 +1,20 @@
 {
   "name": "ROOT Physics Environment",
   "image": "rootproject/root:latest",
-  
-  // After the container starts, install Jupyter and physics libraries.
-  // The '--no-deps' flag on jupyroot avoids version conflicts with ROOT's
-  // own bundled packages, which can sometimes clash with pip installs.
-  "postCreateCommand": "pip install numpy matplotlib scipy jupyterlab jupyroot --no-deps",
-  
-  // Port 8888 is Jupyter's default port. Forwarding it means your
-  // browser can talk to the Jupyter server running in the cloud machine.
+
+  "postCreateCommand": "apt-get update && apt-get install -y python3-pip && pip3 install ipykernel jupyterlab numpy scipy matplotlib",
+
   "forwardPorts": [8888],
-  
+
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter"
-      ]
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/bin/python3"
+      }
     }
   }
 }
