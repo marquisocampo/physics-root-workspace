@@ -1,17 +1,14 @@
 {
   "name": "ROOT Physics Environment",
-  
-  // This tells Codespaces to use a base Ubuntu image.
-  // Think of this as choosing which "flavor" of Linux to start with.
   "image": "rootproject/root:latest",
   
-  // These commands run automatically when the container starts.
-  // It's like having a setup script that runs in the background
-  // before you even touch the terminal.
-  "postCreateCommand": "pip install numpy matplotlib scipy jupyterlab",
+  // After the container starts, install Jupyter and physics libraries.
+  // The '--no-deps' flag on jupyroot avoids version conflicts with ROOT's
+  // own bundled packages, which can sometimes clash with pip installs.
+  "postCreateCommand": "pip install numpy matplotlib scipy jupyterlab jupyroot --no-deps",
   
-  // This makes Jupyter's port available in your browser,
-  // so you can run ROOT inside a notebook if you prefer.
+  // Port 8888 is Jupyter's default port. Forwarding it means your
+  // browser can talk to the Jupyter server running in the cloud machine.
   "forwardPorts": [8888],
   
   "customizations": {
