@@ -1,0 +1,25 @@
+{
+  "name": "ROOT Physics Environment",
+  
+  // This tells Codespaces to use a base Ubuntu image.
+  // Think of this as choosing which "flavor" of Linux to start with.
+  "image": "rootproject/root:latest",
+  
+  // These commands run automatically when the container starts.
+  // It's like having a setup script that runs in the background
+  // before you even touch the terminal.
+  "postCreateCommand": "pip install numpy matplotlib scipy jupyterlab",
+  
+  // This makes Jupyter's port available in your browser,
+  // so you can run ROOT inside a notebook if you prefer.
+  "forwardPorts": [8888],
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ]
+    }
+  }
+}
